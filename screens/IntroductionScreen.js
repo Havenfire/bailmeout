@@ -1,11 +1,5 @@
-import * as React from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  Pressable,
-  TouchableOpacity,
-} from "react-native";
+import React from "react";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontFamily, Color, Border, FontSize } from "../GlobalStyles";
 
@@ -13,104 +7,68 @@ const IntroductionScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.introductionScreen}>
+    <View style={styles.container}>
       <View style={styles.premise}>
-        <Text style={[styles.heading, styles.headingFlexBox]}>{`i need something
+        <Text style={[styles.heading, styles.headingFlexBox]}>
+          {"I need something to bail me out!\n"}
+        </Text>
 
-to bail me out!`}</Text>
-        <Text
-          style={[styles.premise1, styles.headingFlexBox]}
-        >{`THE PREMISE IS SIMPLE, YOU AND YOUR FRIEND BOTH WANT TO CANCEL, BUT DON’T WANT TO BE THE ONE SAY IT.
-
-YOU BOTH USE BAILMEOUT (NOW!), AND CANCEL YOUR PLANS WITHOUT ANY AWKWARDNESS`}</Text>
+        <Text style={styles.headingFlexBox}>
+          {"THE PREMISE IS SIMPLE, YOU AND YOUR FRIEND BOTH WANT TO CANCEL, BUT DON'T WANT TO BE THE ONE TO SAY IT. \n\nYOU BOTH USE BAILMEOUT (NOW!), AND CANCEL YOUR PLANS WITHOUT ANY AWKWARDNESS"}
+        </Text>
       </View>
+
       <TouchableOpacity
-        style={[styles.controlsButtons, styles.controlsLayout]}
-        activeOpacity={0.2}
+        style={styles.button}
+        activeOpacity={0.7}
         onPress={() => navigation.navigate("LoginMobilePhone")}
       >
-        <Pressable
-          style={[styles.controlsButtons1, styles.controlsLayout]}
-          onPress={() => navigation.navigate("LoginMobilePhone")}
-        >
-          <Text style={styles.text}>Next</Text>
-        </Pressable>
+        <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  headingFlexBox: {
+  container: {
+    flex: 1,
+    backgroundColor: Color.darkslategray,
     justifyContent: "center",
     alignItems: "center",
-    display: "flex",
-    fontFamily: FontFamily.montserratMedium,
-    lineHeight: 22,
-    textAlign: "center",
-    color: Color.white,
-    fontWeight: "500",
-    position: "absolute",
-  },
-  controlsLayout: {
-    height: 48,
-    borderRadius: Border.br_29xl,
-    position: "absolute",
-  },
-  heading: {
-    top: 0,
-    fontSize: 30,
-    letterSpacing: 0.3,
-    textTransform: "uppercase",
-    height: 92,
-    left: 0,
-    width: 319,
-  },
-  premise1: {
-    top: 112,
-    left: 43,
-    fontSize: 17,
-    letterSpacing: 0.2,
-    width: 242,
   },
   premise: {
-    top: 145,
-    left: 28,
-    height: 354,
-    width: 319,
-    position: "absolute",
+    paddingVertical: 24,
+    paddingHorizontal: 16,
+    borderRadius: Border.br_29xl,
+    marginBottom: 24,
+    width: "80%",
   },
-  text: {
-    marginTop: -8,
-    marginLeft: -17.5,
-    top: "50%",
-    left: "50%",
-    fontSize: FontSize.size_base,
-    lineHeight: 16,
-    fontFamily: FontFamily.interMedium,
+  headingFlexBox: {
     textAlign: "center",
     color: Color.white,
-    fontWeight: "500",
+    fontFamily: FontFamily.montserratMedium,
+    lineHeight: 34,
+    marginBottom: 16,
+  },
+  heading: {
+    fontSize: 25,
+    textTransform: "uppercase",
+  },
+  button: {
     position: "absolute",
-  },
-  controlsButtons1: {
-    right: 0,
-    bottom: 0,
+    bottom: 24,
     backgroundColor: Color.gray_100,
-    left: 0,
+    width: "80%",
+    height: 48,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: Border.br_29xl,
   },
-  controlsButtons: {
-    right: 24,
-    bottom: 61,
-    left: 24,
-  },
-  introductionScreen: {
-    borderRadius: Border.br_13xl,
-    backgroundColor: Color.darkslategray,
-    flex: 1,
-    width: "100%",
-    height: 812,
-    overflow: "hidden",
+  buttonText: {
+    color: Color.white,
+    fontFamily: FontFamily.interMedium,
+    fontSize: FontSize.size_base,
+    lineHeight: 24,
   },
 });
 

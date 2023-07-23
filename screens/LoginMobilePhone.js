@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Pressable, Text, StyleSheet, View, TextInput } from "react-native";
+import React from "react";
+import { Pressable, Text, StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import TimeContainer from "../components/TimeContainer";
 import { Border, FontFamily, FontSize, Color } from "../GlobalStyles";
@@ -7,135 +7,115 @@ import { Border, FontFamily, FontSize, Color } from "../GlobalStyles";
 const LoginMobilePhone = () => {
   const navigation = useNavigation();
 
+
   return (
-    <View style={styles.loginMobilePhone}>
-      <Pressable
-        style={[styles.controlsButtons, styles.controlsLayout]}
-        onPress={() => navigation.navigate("NoContactsScreen")}
-      >
-        <View
-          style={[styles.controlsButtons1, styles.controlsButtons1Position]}
-        >
-          <Text style={styles.text}>Log in</Text>
-        </View>
-      </Pressable>
-      <Text style={styles.youWillReceive}>
-        You will receive an SMS verification that may apply message and data
-        rates.
-      </Text>
+
+
+    <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.welcomeText}>Welcome!</Text>
+        <Text style={styles.signInText}>Sign in / Log in to your account</Text>
+      </View>
+
       <TextInput
-        style={[styles.controlsTextFields, styles.signInTypo]}
+        style={styles.phoneNumberInput}
         placeholder="(123) 456-7890"
         keyboardType="number-pad"
+        returnKeyType={ 'done' }
         autoCapitalize="none"
-        secureTextEntry={false}
         placeholderTextColor="#72777a"
         maxLength={10}
       />
-      <View
-        style={[
-          styles.navigationBarLargeTitle,
-          styles.controlsButtons1Position,
-        ]}
+
+      <Text style={styles.infoText}>
+        You will receive an SMS verification that may apply message and data rates.
+      </Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.7}
+        onPress={() => navigation.navigate("NoContactsScreen")}
       >
-        <Text style={[styles.welcome, styles.signInFlexBox]}>Welcome!</Text>
-        <Text style={[styles.signIn, styles.signInFlexBox]}>
-          Sign in / Log in to your account
-        </Text>
-      </View>
-      <TimeContainer />
+        <Text style={styles.buttonText}>Next</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  controlsLayout: {
+  container: {
+    flex: 1,
+    backgroundColor: Color.darkslategray,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loginButton: {
     borderRadius: Border.br_29xl,
     height: 48,
-  },
-  controlsButtons1Position: {
-    left: 0,
-    right: 0,
-    position: "absolute",
-  },
-  signInTypo: {
-    fontFamily: FontFamily.interRegular,
-    fontSize: FontSize.size_base,
-  },
-  signInFlexBox: {
-    alignSelf: "stretch",
-    textAlign: "left",
-    color: Color.white,
-  },
-  text: {
-    marginTop: -8,
-    marginLeft: -22.5,
-    top: "50%",
-    left: "50%",
-    fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
-    textAlign: "center",
-    color: Color.white,
-    lineHeight: 16,
-    fontSize: FontSize.size_base,
-    position: "absolute",
-  },
-  controlsButtons1: {
-    bottom: 0,
+    width: "80%",
     backgroundColor: Color.gray_100,
-    height: 48,
-    borderRadius: Border.br_29xl,
+    marginBottom: 24,
   },
-  controlsButtons: {
-    bottom: 61,
-    height: 48,
-    left: 24,
-    right: 24,
-    position: "absolute",
+  loginButtonInner: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  youWillReceive: {
-    top: 264,
+  loginButtonText: {
+    color: Color.white,
+    fontFamily: FontFamily.interMedium,
+    fontSize: FontSize.size_base,
+    lineHeight: 24,
+  },
+  infoText: {
     fontSize: FontSize.size_xs,
     color: "#6c7072",
-    width: 327,
-    textAlign: "left",
+    textAlign: "center",
     fontFamily: FontFamily.interRegular,
     lineHeight: 16,
-    left: 24,
-    position: "absolute",
+    marginBottom: 24,
+    width: "80%",
   },
-  controlsTextFields: {
-    top: 200,
+  phoneNumberInput: {
     borderRadius: 8,
     height: 48,
-    left: 24,
-    right: 24,
-    position: "absolute",
+    width: "80%",
+    paddingHorizontal: 16,
+    backgroundColor: Color.white,
+    marginBottom: 24,
   },
-  welcome: {
+  titleContainer: {
+    alignItems: "center",
+    marginBottom: 24,
+  },
+  welcomeText: {
     fontSize: 32,
     lineHeight: 36,
-    fontWeight: "700",
     fontFamily: FontFamily.interBold,
+    color: Color.white,
   },
-  signIn: {
-    lineHeight: 24,
-    marginTop: 8,
-    fontFamily: FontFamily.interRegular,
+  signInText: {
     fontSize: FontSize.size_base,
+    fontFamily: FontFamily.interRegular,
+    color: Color.white,
+    marginTop: 8,
   },
-  navigationBarLargeTitle: {
-    top: 92,
-    paddingHorizontal: 24,
-    paddingVertical: 12,
+
+  button: {
+    position: "absolute",
+    bottom: 24,
+    backgroundColor: Color.gray_100,
+    width: "80%",
+    height: 48,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: Border.br_29xl,
   },
-  loginMobilePhone: {
-    borderRadius: Border.br_13xl,
-    backgroundColor: Color.darkslategray,
-    flex: 1,
-    width: "100%",
-    height: 812,
-    overflow: "hidden",
+  buttonText: {
+    color: Color.white,
+    fontFamily: FontFamily.interMedium,
+    fontSize: FontSize.size_base,
+    lineHeight: 24,
   },
 });
 
