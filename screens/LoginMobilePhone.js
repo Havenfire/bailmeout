@@ -8,6 +8,7 @@ const LoginMobilePhone = () => {
   const navigation = useNavigation();
 
 
+
   return (
 
 
@@ -21,7 +22,7 @@ const LoginMobilePhone = () => {
         style={styles.phoneNumberInput}
         placeholder="(123) 456-7890"
         keyboardType="number-pad"
-        returnKeyType={ 'done' }
+        returnKeyType={'done'}
         autoCapitalize="none"
         placeholderTextColor="#72777a"
         maxLength={10}

@@ -5,7 +5,7 @@ import { Border, Color } from "../GlobalStyles";
 
 const SplashScreen = () => {
   return (
-    <View style={styles.splashScreen}>
+    <View style={styles.container}>
       <Image
         style={styles.logoIcon}
         contentFit="cover"
@@ -16,14 +16,9 @@ const SplashScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  logoIcon: {
-    position: "absolute",
-    top: 204,
-    left: 86,
-    width: 203,
-    height: 203,
-  },
-  splashScreen: {
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: Border.br_13xl,
     backgroundColor: Color.darkslategray,
     flex: 1,
@@ -31,6 +26,11 @@ const styles = StyleSheet.create({
     height: 812,
     overflow: "hidden",
   },
+  logoIcon: {
+    width: 203,
+    height: 203,
+  },
+
 });
 
 export default SplashScreen;
