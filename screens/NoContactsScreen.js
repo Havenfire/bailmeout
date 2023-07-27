@@ -18,16 +18,25 @@ const NoContactsScreen = () => {
       });
 
       if (data.length > 0) {
-
-        //console.log(data);
-
-
       }
 
-      navigation.navigate("FlakeScreen", {
-        contactList: data,
-      });
+      // console.log(data);
 
+      for (let i = 0; i < data.length; i++) {
+        if(true) {
+          data[0].hasApp = true
+        }
+        else
+        {
+          data[0].hasApp = false
+        }
+      }
+
+
+      // navigation.navigate("FlakeScreen", {
+      //   contactList: data,
+      // });
+      
     }
     else {
       setModalVisible(true)
