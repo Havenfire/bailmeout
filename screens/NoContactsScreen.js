@@ -18,16 +18,20 @@ const NoContactsScreen = () => {
       });
 
       if (data.length > 0) {
-        console.log(data);
+
+        //console.log(data);
+
+
       }
 
-      navigation.navigate("FlakeScreen");
+      navigation.navigate("FlakeScreen", {
+        contactList: data,
+      });
 
     }
     else {
       setModalVisible(true)
     }
-    setModalVisible(true)
 
   };
 
@@ -45,7 +49,7 @@ const NoContactsScreen = () => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>You cannot use this app without syncing your contacts! We will use this to make sure other users have the app, and so you can invite people easier</Text>
+            <Text style={styles.modalText}>You cannot use this app without syncing your contacts! We will use this to make sure other users have the app, and so you can invite people easier. You may need to enable contacts in settings and reload the app</Text>
             <Pressable
               style={[styles.button2, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>

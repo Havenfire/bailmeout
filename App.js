@@ -29,7 +29,7 @@ const App = () => {
   React.useEffect(() => {
     setTimeout(() => {
       setHideSplashScreen(true);
-    }, 3000);
+    }, 1000);
   }, []);
 
   if (!fontsLoaded && !error) {

@@ -8,173 +8,32 @@ import {
   TextInput,
   ScrollView,
   Share,
+  FlatList,
 } from "react-native";
-import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
-import SwipeUpComponent from "../components/SwipeUpComponent";
 import { FontFamily, Color, FontSize, Padding, Border } from "../GlobalStyles";
 
-const FlakeScreen = () => {
+const FlakeScreen = ({ route }) => {
   const navigation = useNavigation();
 
-  const onIconUserPlusClick = useCallback(async () => {
-    try {
-      const result = await Share.share({
-        message: "Need to bail?",
-      });
+  contactList = route.params;
+  console.log(contactList)
 
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  }, []);
-
-  const onIconUserPlus1Click = useCallback(async () => {
-    try {
-      const result = await Share.share({
-        message: "Need to bail?",
-      });
-
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  }, []);
-
-  const onIconUserPlus2Click = useCallback(async () => {
-    try {
-      const result = await Share.share({
-        message: "Need to bail?",
-      });
-
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  }, []);
-
-  const onIconUserPlus3Click = useCallback(async () => {
-    try {
-      const result = await Share.share({
-        message: "Need to bail?",
-      });
-
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  }, []);
-
-  const onIconUserPlus4Click = useCallback(async () => {
-    try {
-      const result = await Share.share({
-        message: "Need to bail?",
-      });
-
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  }, []);
-
-  const onIconUserPlus5Click = useCallback(async () => {
-    try {
-      const result = await Share.share({
-        message: "Need to bail?",
-      });
-
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  }, []);
 
   return (
     <View style={styles.flakeScreen}>
-      <View style={styles.nativeStatusBar}>
-        <Text style={styles.text}>9:41</Text>
-        <Image
-          style={styles.nativeStatusBarChild}
-          contentFit="cover"
-          source={require("../assets/frame-20.png")}
-        />
-      </View>
       <View style={[styles.frame, styles.frameFlexBox]}>
         <TouchableOpacity
           style={styles.switchScreenButton}
           activeOpacity={0.2}
           onPress={() => navigation.navigate("AddContactsScreen")}
         >
-          <Image
-            style={styles.icon}
-            contentFit="cover"
-            source={require("../assets/switch-screen-button1.png")}
-          />
         </TouchableOpacity>
         <Text style={[styles.flakeEveryoneHere, styles.frameFlexBox]}>
           Flake everyone here!
         </Text>
       </View>
-      <SwipeUpComponent
-        swipeUpComponentPosition="relative"
-        swipeUpComponentTop="unset"
-        swipeUpComponentLeft="unset"
-        swipeUpComponentMarginTop={46}
-        onIconUserPlusPress={onIconUserPlusClick}
-        onIconUserPlusPress1={onIconUserPlus1Click}
-        onIconUserPlusPress2={onIconUserPlus2Click}
-        onIconUserPlusPress3={onIconUserPlus3Click}
-        onIconUserPlusPress4={onIconUserPlus4Click}
-        onIconUserPlusPress5={onIconUserPlus5Click}
-      />
+
     </View>
   );
 };
