@@ -3,17 +3,30 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import SplashScreen from "./screens/SplashScreen";
-import InviteContact from "./components/InviteContact";
 import IntroductionScreen from "./screens/IntroductionScreen";
 import LoginMobilePhone from "./screens/LoginMobilePhone";
 import NoContactsScreen from "./screens/NoContactsScreen";
-import InviteContact1 from "./components/InviteContact1";
 import AddContactsScreen from "./screens/AddContactsScreen";
 import FlakeScreen from "./screens/FlakeScreen";
-import SwipeUpComponent from "./components/SwipeUpComponent";
-
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
+
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDB3dlD8M0EQX_8Oj0rOHqD4qgGGBzbh9E",
+  authDomain: "bailmeout-3250b.firebaseapp.com",
+  projectId: "bailmeout-3250b",
+  storageBucket: "bailmeout-3250b.appspot.com",
+  messagingSenderId: "936600629052",
+  appId: "1:936600629052:web:a9ce19f2902280ea743839",
+  measurementId: "G-JW16C81997"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(false);

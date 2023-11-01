@@ -3,6 +3,7 @@ import { Text, StyleSheet, Modal, Pressable, View, TouchableOpacity } from "reac
 import { useNavigation } from "@react-navigation/native";
 import { Border, FontFamily, FontSize, Color } from "../GlobalStyles";
 import * as Contacts from 'expo-contacts';
+import { PermissionsAndroid } from 'react-native';
 
 const NoContactsScreen = () => {
   const navigation = useNavigation();
@@ -20,7 +21,7 @@ const NoContactsScreen = () => {
       if (data.length > 0) {
       }
 
-      // console.log(data);
+      console.log(data);
 
       for (let i = 0; i < data.length; i++) {
         if(true) {
@@ -32,10 +33,13 @@ const NoContactsScreen = () => {
         }
       }
 
+      
 
-      // navigation.navigate("FlakeScreen", {
-      //   contactList: data,
-      // });
+
+
+      navigation.navigate("FlakeScreen", {
+        contactList: data,
+      });
       
     }
     else {
@@ -43,6 +47,7 @@ const NoContactsScreen = () => {
     }
 
   };
+
 
 
   return (
