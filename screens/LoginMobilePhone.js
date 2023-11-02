@@ -1,17 +1,32 @@
-import React from "react";
-import { Pressable, Text, StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import TimeContainer from "../components/TimeContainer";
+import { getAuth, signInWithPhoneNumber } from "firebase/auth";
+
 import { Border, FontFamily, FontSize, Color } from "../GlobalStyles";
+const appVerifier = window.recaptchaVerifier;
 
 const LoginMobilePhone = () => {
   const navigation = useNavigation();
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const auth = getAuth();
 
+  console.log("I am here")
+  console.log(phoneNumber)
+  console.log(auth)
+  console.log(appVerifier)
+  const sendVerificationCode = async () => {
+    try {
+      const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
 
+      
+    } catch (error) {
+      console.error("Error sending verification code: ", error);
+      Alert.alert("Error", "Could not send verification code. Please try again.");
+    }
+  };
 
   return (
-
-
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.welcomeText}>Welcome!</Text>
@@ -22,10 +37,12 @@ const LoginMobilePhone = () => {
         style={styles.phoneNumberInput}
         placeholder="(123) 456-7890"
         keyboardType="number-pad"
-        returnKeyType={'done'}
+        returnKeyType="done"
         autoCapitalize="none"
         placeholderTextColor="#72777a"
         maxLength={10}
+        value={phoneNumber}
+        onChangeText={setPhoneNumber}
       />
 
       <Text style={styles.infoText}>
@@ -35,7 +52,7 @@ const LoginMobilePhone = () => {
       <TouchableOpacity
         style={styles.button}
         activeOpacity={0.7}
-        onPress={() => navigation.navigate("NoContactsScreen")}
+        onPress={sendVerificationCode}
       >
         <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>

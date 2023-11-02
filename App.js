@@ -9,10 +9,10 @@ import NoContactsScreen from "./screens/NoContactsScreen";
 import AddContactsScreen from "./screens/AddContactsScreen";
 import FlakeScreen from "./screens/FlakeScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { getAuth } from "firebase/auth";
 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 
 const firebaseConfig = {
@@ -24,15 +24,13 @@ const firebaseConfig = {
   appId: "1:936600629052:web:a9ce19f2902280ea743839",
   measurementId: "G-JW16C81997"
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-const auth = getAuth();
-auth.languageCode = 'it';
-
+const db = getFirestore(app)
+const auth = getAuth(app)
 const App = () => {
+
+
+  
   const [hideSplashScreen, setHideSplashScreen] = React.useState(false);
   const [fontsLoaded, error] = useFonts({
     "Montserrat-Regular": require("./assets/fonts/Montserrat-Regular.ttf"),
