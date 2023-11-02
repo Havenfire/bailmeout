@@ -9,6 +9,7 @@ import NoContactsScreen from "./screens/NoContactsScreen";
 import AddContactsScreen from "./screens/AddContactsScreen";
 import FlakeScreen from "./screens/FlakeScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { getAuth } from "firebase/auth";
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -27,6 +28,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+const auth = getAuth();
+auth.languageCode = 'it';
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(false);
