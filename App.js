@@ -14,23 +14,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDB3dlD8M0EQX_8Oj0rOHqD4qgGGBzbh9E",
-  authDomain: "bailmeout-3250b.firebaseapp.com",
-  projectId: "bailmeout-3250b",
-  storageBucket: "bailmeout-3250b.appspot.com",
-  messagingSenderId: "936600629052",
-  appId: "1:936600629052:web:a9ce19f2902280ea743839",
-  measurementId: "G-JW16C81997"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app)
-const auth = getAuth(app)
 const App = () => {
 
-
-  
   const [hideSplashScreen, setHideSplashScreen] = React.useState(false);
   const [fontsLoaded, error] = useFonts({
     "Montserrat-Regular": require("./assets/fonts/Montserrat-Regular.ttf"),

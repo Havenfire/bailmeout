@@ -2,44 +2,22 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth, signInWithPhoneNumber } from "firebase/auth";
-
 import { Border, FontFamily, FontSize, Color } from "../GlobalStyles";
-import firebase from '../firebaseConfig';
+import auth from '../firebase.js';
 
-const appVerifier = window.recaptchaVerifier;
 
 const LoginMobilePhone = () => {
   const navigation = useNavigation();
   const [phoneNumber, setPhoneNumber] = useState("");
-  const auth = getAuth();
 
 
   console.log("I am here")
-  console.log(phoneNumber)
-  console.log(auth)
-  console.log(appVerifier)
+  const handleSignup = () => {
+    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
 
-  const sendVerification = () => {
-    console.log(firebase)
-    const phoneProvider = new firebase.auth.PhoneAuthProvider();
-    phoneProvider
-      .verifyPhoneNumber(phoneNumber, recaptchaVerifier.current)
-      .then(setVerificationId);
   };
 
-  const confirmCode = () => {
-    const credential = firebase.auth.PhoneAuthProvider.credential(
-      verificationId,
-      code
-    );
-    firebase
-      .auth()
-      .signInWithCredential(credential)
-      .then((result) => {
-        // Do something with the results here
-        console.log(result);
-      });
-  }
+
 
   return (
     <View style={styles.container}>
@@ -67,7 +45,7 @@ const LoginMobilePhone = () => {
       <TouchableOpacity
         style={styles.button}
         activeOpacity={0.7}
-        onPress={sendVerification}
+        onPress={handleSignup}
       >
         <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>
